@@ -35,8 +35,8 @@ const userLogin = (req, res) => {
             res.send({
               status: true,
               message: "Login Successful",
-              firstname: result.firstname,
               user_id: result._id,
+              user:result
             });
           } else {
             res.send({ status: false, message: "Incorrect Password" });
