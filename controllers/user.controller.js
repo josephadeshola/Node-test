@@ -61,24 +61,24 @@ const userLogin = (req, res) => {
     });
 };
 
-const logOutUser = (req, res) => {
-  const { userId } = req.body;
-  console.log(userId);
-  User.findOneAndDelete({ _d: userId })
-    .then((result) => {
-      if (result) {
-        res
-          .status(200)
-          .json({ status: true, message: "User logged out successfully" });
-      } else {
-        res.status(404).json({ status: false, message: "User not found" });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ status: false, message: "Internal Server Error" });
-    });
-};
+// const logOutUser = (req, res) => {
+//   const { userId } = req.body;
+//   console.log(userId);
+//   User.findOneAndDelete({ _d: userId })
+//     .then((result) => {
+//       if (result) {
+//         res
+//           .status(200)
+//           .json({ status: true, message: "User logged out successfully" });
+//       } else {
+//         res.status(404).json({ status: false, message: "User not found" });
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({ status: false, message: "Internal Server Error" });
+//     });
+// };
 
 const authUser = async (req, res) => {
   const token = req.headers.authorization.split("VanLife")[1];
@@ -148,4 +148,4 @@ const userEdit = (req, res) => {
   }
 
 };
-module.exports = { registerUser, userLogin, logOutUser, authUser, userEdit };
+module.exports = { registerUser, userLogin, authUser, userEdit };
